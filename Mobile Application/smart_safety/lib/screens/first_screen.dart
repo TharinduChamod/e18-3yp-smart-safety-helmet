@@ -6,6 +6,7 @@ import 'SelectBondedDevicePage.dart';
 import 'discover_page.dart';
 import 'main_screen.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+import 'message_screen.dart';
 
 class ConnectingScreen extends StatefulWidget {
   // Variable for storing username
@@ -102,7 +103,10 @@ class _ConnectionScreen extends State<ConnectingScreen> {
         return false;
       },
       child: Scaffold(
-        body: SingleChildScrollView(
+        body:Stack(
+          children: [
+            SingleChildScrollView(
+                                   
             child: Column(
           children: [
             // Gap above
@@ -148,22 +152,7 @@ class _ConnectionScreen extends State<ConnectingScreen> {
                   Image(image: AssetImage('images/logo.png'), fit: BoxFit.fill),
             ),
 
-            // Button to redirect to the main screen
-            // IconButton(
-            //     icon: const Icon(Icons.bluetooth_outlined),
-            //     tooltip: 'Connect with Helmet',
-            //     iconSize: 40,
-            //     onPressed: () async {
-            //       final BluetoothDevice? selectedDevice =
-            //           await Navigator.of(context).push(
-            //         MaterialPageRoute(
-            //           builder: (context) {
-            //             return const DiscoveryPage();
-            //           },
-            //         ),
-            //       );
-            //     }),
-
+            
             // Gap between button and bluetooth button
             const SizedBox(
               height: 10,
@@ -210,7 +199,7 @@ class _ConnectionScreen extends State<ConnectingScreen> {
             // Button to start working
             SizedBox(
               width: 300,
-              height: 80,
+              height: 50,
               child: ElevatedButton(
                 onPressed: () async {
                   final BluetoothDevice? selectedDevice =
@@ -262,7 +251,7 @@ class _ConnectionScreen extends State<ConnectingScreen> {
                 padding: const EdgeInsets.all(15.0),
                 child: SizedBox(
                   width: 300,
-                  height: 120,
+                  height: 80,
                   // child text
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -283,9 +272,40 @@ class _ConnectionScreen extends State<ConnectingScreen> {
                   ),
                 ),
               ),
-            )
+            ),
+            //==================================================================================================================================
+            
+          
           ],
-        )),
+          
+          ),
+            ),
+            Positioned(
+            bottom: 16, // Adjust this value to change the vertical position
+            right: 16, // Adjust this value to change the horizontal position
+            
+            child: Align(
+              
+              child: FloatingActionButton(
+                onPressed: () {
+                  // Add your chat bot icon's onPressed logic here
+                  Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => HomeScreen(
+                                
+                              ),
+                            ),
+                          );
+                },
+                child: Icon(Icons.chat),
+              ),
+            ),
+          ),
+        ],
+        
+        
+        )
+   
       ),
     );
   }
