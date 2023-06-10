@@ -5,6 +5,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
+
+
+  // Variable for storing username
+  final String username;
+
+  // Variable to storing user-id
+  final String userID;
+
+
+
+  const HomeScreen({super.key, required this.username, required this.userID});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -141,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                           //     _auth.currentUser!.displayName!,
                           //     userMap!['name']);
                           String roomId = chatRoomId(
-                              "TestUser",
+                              widget.userID,
                               userMap!['name']);
                           print("room id:"+roomId);
                           Navigator.of(context).push(

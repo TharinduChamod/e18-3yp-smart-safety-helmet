@@ -251,7 +251,7 @@ class _ConnectionScreen extends State<ConnectingScreen> {
                 padding: const EdgeInsets.all(15.0),
                 child: SizedBox(
                   width: 300,
-                  height: 80,
+                  height: 150,
                   // child text
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -267,18 +267,22 @@ class _ConnectionScreen extends State<ConnectingScreen> {
                       Text(
                         "To pair a new device long press the device you waant to pair",
                         style: TextStyle(fontSize: 22),
-                      )
+                      ),
+                      
                     ],
                   ),
                 ),
               ),
             ),
             //==================================================================================================================================
-            
+            const SizedBox(
+              height: 50,
+            ),
           
           ],
           
           ),
+          
             ),
             Positioned(
             bottom: 16, // Adjust this value to change the vertical position
@@ -292,7 +296,7 @@ class _ConnectionScreen extends State<ConnectingScreen> {
                   Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (_) => HomeScreen(
-                                
+                                username: widget.username, userID: widget.userID,
                               ),
                             ),
                           );
